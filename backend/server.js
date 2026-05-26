@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const ticketRoutes = require('./routes/ticketRoutes');
+const bfhlRoutes = require('./routes/bfhlRoutes');
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(express.json());
 // Base diagnostic endpoint
 app.get('/', (req, res) => {
   res.json({
-    name: 'DeskFlow Support Ticket API',
+    name: 'DeskFlow Support Ticket API + BFHL API',
     candidate: 'Shivam Kumar',
     email: 'shivamkumar230983@acropolis.in',
     status: 'online',
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 
 // Mount Routes
 app.use('/tickets', ticketRoutes);
+app.use('/bfhl', bfhlRoutes);
 
 // Global 404 Route handler
 app.use((req, res, next) => {
