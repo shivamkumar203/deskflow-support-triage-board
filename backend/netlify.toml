@@ -1,0 +1,11 @@
+# Netlify backend configuration
+
+[build]
+  command = "npm install"
+  functions = "."
+
+[[redirects]]
+  # Rewrite all requests to the serverless Express function handler
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
