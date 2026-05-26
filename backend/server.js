@@ -47,6 +47,13 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'production'} mode on port ${PORT}`);
-});
+// Export serverless handler for Netlify, otherwise start local server listener
+if (process.env.NETLIFY) {
+  const serverless = require('serverless-http');
+  module.exports = app;
+  module.exports.handler = serverless(app);
+} else {
+  app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV || 'production'} mode on port ${PORT}`);
+  });
+}

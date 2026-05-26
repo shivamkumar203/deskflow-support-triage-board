@@ -1,13 +1,24 @@
-# Netlify configuration file for MERN Triage Board Monorepo
+# Netlify configuration file for unified Frontend + Serverless Backend Monorepo
 
 [build]
-  # Directs Netlify to build the frontend sub-project
+  # Steps into frontend, installs dependencies and compiles React bundle
   base = "frontend"
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  # Tells Netlify to package your Express backend as a serverless function
+  directory = "../backend"
+  node_bundler = "esbuild"
+
 [[redirects]]
-  # Redirects all routing requests to index.html for React SPA router support
+  # Rewrite /api/tickets to the backend Express tickets router
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[[redirects]]
+  # Supports React client SPA Router fallbacks
   from = "/*"
   to = "/index.html"
   status = 200

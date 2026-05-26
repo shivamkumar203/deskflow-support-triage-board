@@ -5,7 +5,9 @@ import Board from './components/Board';
 import TicketForm from './components/TicketForm';
 import { Plus, Code, Mail, User, AlertCircle, RefreshCw } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : '/api';
 
 const App = () => {
   const [tickets, setTickets] = useState([]);
