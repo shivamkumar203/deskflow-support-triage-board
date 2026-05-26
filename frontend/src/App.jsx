@@ -3,7 +3,7 @@ import StatsStrip from './components/StatsStrip';
 import Filters from './components/Filters';
 import Board from './components/Board';
 import TicketForm from './components/TicketForm';
-import { Plus, Github, Mail, User, AlertCircle, RefreshCw } from 'lucide-react';
+import { Plus, Code, Mail, User, AlertCircle, RefreshCw } from 'lucide-react';
 
 const API_BASE_URL = 'http://localhost:5000';
 
@@ -146,7 +146,7 @@ const App = () => {
             <span>shivamkumar230983@acropolis.in</span>
           </div>
           <div className="candidate-meta-item">
-            <Github className="cand-icon" />
+            <Code className="cand-icon" />
             <span>shivamkumar203</span>
           </div>
         </div>
