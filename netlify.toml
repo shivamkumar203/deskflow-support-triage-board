@@ -1,21 +1,9 @@
-# Netlify configuration file for unified Frontend + Serverless Backend Monorepo
+# Netlify configuration file for Frontend
 
 [build]
-  # Steps into frontend, installs dependencies and compiles React bundle
   base = "frontend"
   command = "npm run build"
   publish = "dist"
-
-[functions]
-  # Tells Netlify to package your Express backend as a serverless function
-  directory = "../backend"
-  node_bundler = "esbuild"
-
-[[redirects]]
-  # Rewrite /api/tickets to the backend Express tickets router
-  from = "/api/*"
-  to = "/.netlify/functions/server/:splat"
-  status = 200
 
 [[redirects]]
   # Supports React client SPA Router fallbacks
