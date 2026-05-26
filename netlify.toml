@@ -1,0 +1,13 @@
+# Netlify configuration file for MERN Triage Board Monorepo
+
+[build]
+  # Directs Netlify to build the frontend sub-project
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  # Redirects all routing requests to index.html for React SPA router support
+  from = "/*"
+  to = "/index.html"
+  status = 200
